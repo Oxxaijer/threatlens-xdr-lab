@@ -1,0 +1,32 @@
+[
+  {
+    "timestamp": "2026-03-10T09:30:00Z",
+    "source_type": "sandbox",
+    "event_type": "mass_file_encryption_behavior",
+    "severity": "critical",
+    "host": "sandbox-node-01",
+    "source_ip": null,
+    "user": "sample.exe",
+    "process_name": "sample.exe",
+    "description": "Executable modified large numbers of files in rapid succession, ransomware-like behavior.",
+    "raw_data": {
+      "files_touched": 248,
+      "extensions": [".docx", ".pdf", ".xlsx"]
+    }
+  },
+  {
+    "timestamp": "2026-03-10T09:31:10Z",
+    "source_type": "sandbox",
+    "event_type": "c2_beaconing",
+    "severity": "high",
+    "host": "sandbox-node-01",
+    "source_ip": "185.222.81.10",
+    "user": "sample.exe",
+    "process_name": "sample.exe",
+    "description": "Repeated outbound connections to suspicious external IP, possible command-and-control traffic.",
+    "raw_data": {
+      "destination_ip": "185.222.81.10",
+      "connection_count": 14
+    }
+  }
+]

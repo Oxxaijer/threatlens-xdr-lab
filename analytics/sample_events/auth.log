@@ -1,0 +1,8 @@
+Mar 10 09:15:01 server sshd[1234]: Failed password for invalid user admin from 192.168.1.10 port 55001 ssh2
+Mar 10 09:15:10 server sshd[1235]: Failed password for invalid user admin from 192.168.1.10 port 55002 ssh2
+Mar 10 09:15:18 server sshd[1236]: Failed password for invalid user admin from 192.168.1.10 port 55003 ssh2
+Mar 10 09:15:26 server sshd[1237]: Failed password for invalid user admin from 192.168.1.10 port 55004 ssh2
+Mar 10 09:15:34 server sshd[1238]: Failed password for invalid user admin from 192.168.1.10 port 55005 ssh2
+Mar 10 09:16:02 server sshd[1240]: Failed password for root from 10.0.0.5 port 44221 ssh2
+Mar 10 09:16:20 server sudo: pam_unix(sudo:auth): authentication failure; user=jerry
+Mar 10 09:17:10 server CRON[1300]: (root) CMD (/tmp/suspicious-script.sh)

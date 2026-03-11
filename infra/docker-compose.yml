@@ -1,0 +1,69 @@
+services:
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.17.1
+    container_name: threatlens-elasticsearch
+    environment:
+      - discovery.type=single-node
+      - xpack.security.enabled=false
+      - ES_JAVA_OPTS=-Xms1g -Xmx1g
+    ports:
+      - "9200:9200"
+    volumes:
+      - es_data:/usr/share/elasticsearch/data
+    networks:
+      - threatlens-net
+
+  kibana:
+    image: docker.elastic.co/kibana/kibana:8.17.1
+    container_name: threatlens-kibana
+    environment:
+      - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
+    ports:
+      - "5601:5601"
+    depends_on:
+      - elasticsearch
+    networks:
+      - threatlens-net
+
+  api:
+    build:
+      context: ..
+      dockerfile: infra/Dockerfile.api
+    container_name: threatlens-api
+    environment:
+      - ELASTICSEARCH_URL=http://elasticsearch:9200
+    ports:
+      - "8001:8001"
+    depends_on:
+      - elasticsearch
+    volumes:
+      - ..:/app
+    working_dir: /app
+    command: uvicorn api.main:app --host 0.0.0.0 --port 8001 --reload
+    networks:
+      - threatlens-net
+
+  dashboard:
+    build:
+      context: ..
+      dockerfile: infra/Dockerfile.dashboard
+    container_name: threatlens-dashboard
+    environment:
+      - API_BASE_URL=http://api:8001
+    ports:
+      - "8501:8501"
+    depends_on:
+      - api
+    volumes:
+      - ..:/app
+    working_dir: /app
+    command: streamlit run dashboard/app.py --server.port=8501 --server.address=0.0.0.0
+    networks:
+      - threatlens-net
+
+volumes:
+  es_data:
+
+networks:
+  threatlens-net:
+    driver: bridge

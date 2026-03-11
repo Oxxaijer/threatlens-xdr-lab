@@ -1,0 +1,44 @@
+[
+  {
+    "timestamp": "2026-03-10T09:20:00Z",
+    "source_type": "windows",
+    "event_type": "powershell_encoded_command",
+    "severity": "high",
+    "host": "win-endpoint-01",
+    "source_ip": "10.10.10.15",
+    "user": "jerry",
+    "process_name": "powershell.exe",
+    "description": "Suspicious PowerShell execution with encoded command flag.",
+    "raw_data": {
+      "command_line": "powershell.exe -enc SQBFAFgA..."
+    }
+  },
+  {
+    "timestamp": "2026-03-10T09:21:30Z",
+    "source_type": "windows",
+    "event_type": "defender_disabled",
+    "severity": "critical",
+    "host": "win-endpoint-01",
+    "source_ip": "10.10.10.15",
+    "user": "SYSTEM",
+    "process_name": "reg.exe",
+    "description": "Microsoft Defender settings modified or disabled.",
+    "raw_data": {
+      "registry_path": "HKLM\\Software\\Policies\\Microsoft\\Windows Defender"
+    }
+  },
+  {
+    "timestamp": "2026-03-10T09:23:00Z",
+    "source_type": "windows",
+    "event_type": "autorun_persistence",
+    "severity": "high",
+    "host": "win-endpoint-02",
+    "source_ip": "10.10.10.18",
+    "user": "admin",
+    "process_name": "reg.exe",
+    "description": "Registry autorun key created, possible persistence mechanism.",
+    "raw_data": {
+      "registry_key": "HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Run"
+    }
+  }
+]
