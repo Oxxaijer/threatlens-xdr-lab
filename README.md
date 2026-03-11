@@ -38,7 +38,7 @@ This section displays generated alerts with severity, threat type, source, MITRE
 
 This section visualises alert distributions by severity, MITRE ATT&CK technique, and source type, helping analysts quickly understand patterns across the environment.
 
-![Threat Analytics Charts](screenshots/analytics-charts.png)
+![Threat Analytics Charts](screenshots/alerts-charts.png)
 
 ---
 
